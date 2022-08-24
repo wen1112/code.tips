@@ -32,14 +32,14 @@ marker数据：
   </table>
 
 ```
-data <- as.matrix(strsplit(marker$B_pan,split = ",")[[1]])
-data <- data.frame(id=c(1:nrow(data)),data)
-names(data)[2] <-name[1]
+data <- as.matrix(strsplit(marker$B_pan,split = ",")[[1]]) ##读取第一列按“，”进行拆分数据，生成为列表形式，所以需要[[1]]提取
+data <- data.frame(id=c(1:nrow(data)),data)  ##创建id，以便于合并
+names(data)[2] <-name[1]  ##命名以方便查看及输出
 name <- names(marker)
 for (i in 2:length(name)) {
   a <- as.matrix(strsplit(as.character(marker[i]),split = ",")[[1]])
   a <- data.frame(id=c(1:nrow(a)),a)
   names(a)[2] <-name[i]
-  data <- merge(data,a,all = T,by="id")
+  data <- merge(data,a,all = T,by="id")  ##长度不一致的地方会被NA填充
 }
 ```
