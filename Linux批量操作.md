@@ -23,3 +23,8 @@ seqkit grep --pattern-file id.txt test_genome.10contig.fna > output.fna
 samtools faidx all.324056.candidate.pc.representive.protein.faa
 cut -f1-2 all.324056.candidate.pc.representive.protein.faa.fai > genome.id
 ```
+
+合并大批量数据(cat * > 用不了时)
+```
+find ./ -name "*.txt"|xargs -I {} cat {} >>all.txt
+```
