@@ -21,6 +21,9 @@ seqkit grep --pattern-file id.txt test_genome.10contig.fna > output.fna
 批量提取序列id(cut -f1)及序列长度(cut -f1-2)
 ```
 samtools faidx all.324056.candidate.pc.representive.protein.faa
+
+
+```
 cut -f1-2 all.324056.candidate.pc.representive.protein.faa.fai > genome.id
 ```
 
@@ -28,3 +31,11 @@ cut -f1-2 all.324056.candidate.pc.representive.protein.faa.fai > genome.id
 ```
 find ./ -name "*.txt"|xargs -I {} cat {} >>all.txt
 ```
+
+文件名前/后加字符串
+```
+sed "s/^/HEAD&/g" test.file
+sed "s/$/&TAIL/g" test.file
+sed "/./{s/^/HEAD&/;s/$/&TAIL/}" test.file
+```
+
